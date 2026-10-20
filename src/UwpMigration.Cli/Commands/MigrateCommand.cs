@@ -79,7 +79,8 @@ internal sealed class MigrateCommand : Command
         while (reader.ReadLine() is { } line)
         {
             var trimmed = line.TrimStart();
-            if (trimmed.StartsWith("[ERROR]", StringComparison.Ordinal)
+            if (trimmed.StartsWith("[WARN]", StringComparison.Ordinal)
+                || trimmed.StartsWith("[ERROR]", StringComparison.Ordinal)
                 || trimmed.StartsWith("[FAIL]", StringComparison.Ordinal))
             {
                 output.WriteLine(line);

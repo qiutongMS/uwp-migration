@@ -136,10 +136,16 @@ public class MigrateCommandTests : MigrateCommandTestBase
             "manifest-only-output"));
         ArrangeTemplateCreation(target, "ManifestOnlySourceApp");
 
-        var (migrateExit, migrateOutput) = await InvokeAsync(source, target);
+        var (migrateExit, migrateOutput) = await InvokeAsync(
+            source,
+            target,
+            "--quiet");
         var (verifyExit, verifyOutput) = await InvokeVerifyAsync(target);
 
         Assert.AreEqual(0, migrateExit, migrateOutput);
+        StringAssert.Contains(
+            migrateOutput,
+            "[WARN] No .csproj found under source");
         Assert.AreEqual(0, verifyExit, verifyOutput);
         using var report = JsonDocument.Parse(await File.ReadAllTextAsync(
             Path.Combine(target.FullName, "migration-report.json"),

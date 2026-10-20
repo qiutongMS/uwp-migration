@@ -461,7 +461,7 @@ public static partial class MechanicalMigration
             }
             if (csprojs.Count == 0)
             {
-                Console.Out.WriteLine("    No .csproj found under source — no reference for the original PackageReference list.");
+                Console.Out.WriteLine("[WARN] No .csproj found under source — no reference for the original PackageReference list.");
             }
             else
             {

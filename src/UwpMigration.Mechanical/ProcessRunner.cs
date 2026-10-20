@@ -71,23 +71,14 @@ public sealed class ProcessRunner : IProcessRunner
                     process.Kill(entireProcessTree: true);
                 }
             }
-            catch (Exception exception) when (
-                exception is InvalidOperationException
-                or Win32Exception
-                or NotSupportedException)
+            catch (InvalidOperationException) when (process.HasExited)
+            {
+            }
+            catch (Win32Exception) when (process.HasExited)
             {
             }
 
-            try
-            {
-                await process.WaitForExitAsync(CancellationToken.None);
-            }
-            catch (Exception exception) when (
-                exception is InvalidOperationException
-                or Win32Exception)
-            {
-            }
-
+            await process.WaitForExitAsync(CancellationToken.None);
             if (output is not null)
             {
                 await ObserveAsync(output);
