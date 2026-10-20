@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "uwp-migration",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Migrate C# UWP applications to WinUI 3 with versioned mechanical evidence, semantic contract recovery, and source-to-target behavioral validation.",
   "author": {
     "name": "qiutongMS",
