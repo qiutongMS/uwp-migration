@@ -17,7 +17,7 @@ WinApp CLI and WinUI analyzer:
 ## Repository layout
 
 ```text
-plugins/                         UWP migration Agent Plugin and Skill
+plugins/uwp-migration/           Agent Plugins 1.0 package and migration Skill
 src/UwpMigration.Contracts/      Versioned JSON contracts
 src/UwpMigration.Mechanical/     Deterministic migration and verification
 src/UwpMigration.Cli/            `uwp-migrate` command line
@@ -43,3 +43,8 @@ uwp-migrate decide-project-item <target> <item> <strategy> <rationale>
 The mechanical engine depends only on a narrow process runner for
 `dotnet new winui` and `dotnet msbuild`. Enforcement is intentionally not part
 of this milestone.
+
+The plugin is currently a preview workflow. It consumes migration-report schema
+1.4 from `uwp-migrate` and keeps behavioral state-plan schema 1.0 separate.
+Released WinApp CLI 0.7 builds, registers, launches, diagnoses, and automates
+apps; it does not provide the UWP-specific migration command.
