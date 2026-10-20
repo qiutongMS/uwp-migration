@@ -2,12 +2,15 @@ using UwpMigration.Contracts;
 
 namespace UwpMigration.Mechanical.Tests;
 
+[TestClass]
 public sealed class MigrationContractVersionsTests
 {
-    [Fact]
-    public void MechanicalAndStateContractsRemainIndependentlyVersioned()
+    [TestMethod]
+    public void MechanicalReportVersionMatchesQualifiedSchema()
     {
-        Assert.Equal("1.4", MigrationContractVersions.MechanicalReport);
-        Assert.Equal("1.0", MigrationContractVersions.StatePlan);
+        Assert.AreEqual("1.4", MigrationContractVersions.MechanicalReport);
+        Assert.AreEqual(
+            MigrationContractVersions.MechanicalReport,
+            MigrationReport.CurrentSchemaVersion);
     }
 }
